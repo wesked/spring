@@ -1,3 +1,4 @@
+<%@ page import="com.photo.wesked.service.impl.ImageServiceImpl" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
@@ -23,6 +24,28 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <!-- Add jQuery library -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <!-- Add mousewheel plugin (this is optional) -->
+    <script type="text/javascript" src="fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+    <!-- Add fancyBox -->
+    <link rel="stylesheet" href="fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+    <script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+    <!-- Optionally add helpers - button, thumbnail and/or media -->
+    <link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+    <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+    <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+    <link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+    <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+    <!-- Add packery -->
+    <link rel="stylesheet" href="packery/packery.css"/>
+    <script type="text/javascript" src="packery/packery.pkgd.min.js"></script>
+    <script type="text/javascript" src="packery/imagesloaded.pkgd.js"></script>
     <![endif]-->
 </head>
 
@@ -41,12 +64,22 @@
             <p><a class="btn btn-lg btn-danger" href="<c:url value="/logout" />" role="button">Выйти</a></p>
 
         </sec:authorize>
+        <div id="images" class="grid">
+
+            <%
+                ImageServiceImpl.getDirectoryImages().forEach(image -> {
+                    System.out.println("<img src=\"images/image/?name='" + image + "'>");
+                });
+            %>
+        </div>
+
+    </div>
     </div>
 
-    <div class="footer">
+
+
         <p>wesked 2k16&copy;</p>
     </div>
 
-</div>
 </body>
 </html>

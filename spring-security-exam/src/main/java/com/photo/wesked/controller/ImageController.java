@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.photo.wesked.service.ImageService;
 
 /**
- * @author timur
+ * @author wesked
  */
 
 @Controller
@@ -33,13 +33,13 @@ public class ImageController {
     @RequestMapping(value = "/image", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<byte[]> getImage(    @RequestParam(value = "name") String name ) throws IOException{
         HttpHeaders headers = new HttpHeaders();
-        // получаем сам файл с картинокой по ее id оторый мы получили в параметре запроса
+        // ???????? ??? ???? ? ?????????? ?? ?? id ?????? ?? ???????? ? ????????? ???????
         File imageFile  = imageService.getByName(name);
-        // открываем байтовый поток
+        // ????????? ???????? ?????
         InputStream inputStream = new FileInputStream(imageFile);
-        //получаем все байты картинки
+        //???????? ??? ????? ????????
         byte[] media = IOUtils.toByteArray(inputStream);
-        // кладем их в HTTP ответ
+        // ?????? ?? ? HTTP ?????
         ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
         return responseEntity;
     }

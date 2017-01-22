@@ -15,7 +15,7 @@ import com.photo.wesked.service.ImageService;
 @Service
 public class ImageServiceImpl implements ImageService {
 
-    private final static String IMAGES_ROOT_PATH = "C:\\Users\\timur\\Desktop\\images";
+    private final static String IMAGES_ROOT_PATH = "C:\\Users\\weske\\Desktop\\exam\\images";
 
     @Override
     public File getByName(String name) {

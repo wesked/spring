@@ -3,7 +3,7 @@ package com.photo.wesked.service;
 import java.io.File;
 
 /**
- * @author timur
+ * @author wesked
  */
 public interface ImageService {
 

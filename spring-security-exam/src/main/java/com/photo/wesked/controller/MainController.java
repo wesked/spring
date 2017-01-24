@@ -13,5 +13,11 @@ public class MainController {
     public String start(Model model){
         return "index";
     }
+    
+    
+    @RequestMapping(value = "/images",  method = RequestMethod.GET)
+    public String getImages(Model model){
+        return "images";
+    }
 
 }

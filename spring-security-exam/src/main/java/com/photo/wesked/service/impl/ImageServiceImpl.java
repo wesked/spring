@@ -7,27 +7,22 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.photo.wesked.config.Constants;
 import com.photo.wesked.service.ImageService;
 
 /**
- * @author timur
+ * @author wesked
  */
 @Service
 public class ImageServiceImpl implements ImageService {
 
-    private final static String IMAGES_ROOT_PATH = "C:\\Users\\weske\\Desktop\\exam\\images";
-
     @Override
     public File getByName(String name) {
-        return new File(IMAGES_ROOT_PATH, name);
-
+        return new File(Constants.IMAGES_ROOT_PATH, name);
     }
 
-
-    public static List<String> getDirectoryImages() {
-        return Arrays.asList(new File(IMAGES_ROOT_PATH).listFiles()).stream().map(file -> file.getName()).collect(Collectors.toList());
+    @Override
+    public List<String> getImageNames() {
+        return Arrays.asList(new File(Constants.IMAGES_ROOT_PATH).listFiles()).stream().map(file -> file.getName()).collect(Collectors.toList());
     }
-
 }
-
-

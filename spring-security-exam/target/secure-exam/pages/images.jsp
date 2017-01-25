@@ -6,19 +6,38 @@
 
 <!DOCTYPE html>
 <head>
+	<!-- Add jQuery library -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+	<!-- Add mousewheel plugin (this is optional) -->
+	<script type="text/javascript" src="/pages/fancybox/lib/jquery.mousewheel.pack.js"></script>
+
+	<!-- Add fancyBox -->
+	<link rel="stylesheet" href="/pages/fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="/pages/fancybox/source/jquery.fancybox.pack.js"></script>
+
+	<!-- Optionally add helpers - button, thumbnail and/or media -->
+	<link rel="stylesheet" href="/pages/fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="/pages/fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
+	<script type="text/javascript" src="/pages/fancybox/source/helpers/jquery.fancybox-media.js"></script>
+
+	<link rel="stylesheet" href="/pages/fancybox/source/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".fancybox1").fancybox({
+			});
+		});
+	</script>
+
+	<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+
 	<link href="<c:url value="/pages/css/bootstrap.css" />" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" media="all" href="jgallery/dist/css/font-awesome.min.css" />
-	<link rel="stylesheet" type="text/css" media="all" href="jgallery/dist/css/jgallery.min.css?v=1.6.0" />
-	<script type="text/javascript" src="jgallery/dist/js/jquery-2.0.3.min.js"></script>
-	<script type="text/javascript" src="jgallery/dist/js/jgallery.min.js?v=1.6.0"></script>
-	<link rel="stylesheet" href="packery/packery.css" />
-	<script type="text/javascript" src="packery/packery.pkgd.min.js"></script>
-	<script type="text/javascript" src="packery/imagesloaded.pkgd.js"></script>
 	<style type="text/css">
 
 		.container {
-			width: 768px;
+			width: 100%;
 			/*
             min-width: 768px;
             max-width: 1200px;
@@ -93,10 +112,11 @@
 
 		}
 
+
 	</style>
 
 </head>
-<body style="width: 900px; margin: 100px auto; height: auto;">
+<body style="width: 900px; margin: 0px auto; height: auto;">
 <header class="main-header container">
 	<nav class="main-navigation">
 		<ul class="nav-panel clearfix">
@@ -115,21 +135,16 @@
 		</ul>
 	</nav>
 	<div class="header-logo">
-		<img src="image/sbg/logo.png" width="137" height="70" alt="Лого но я его не придумал">
+		<img src="/pages/logo.png" width="137" height="70" alt="Лого но я его не придумал">
 	</div>
 </header>
 
 	<c:forEach var="name" items="${imageNames}">
 		<div id="gallery">
-			<a href="images/image/?name=${name}">
-			<img style="max-width: 100%; height: auto; padding: 10px;" src="images/image/?name=${name}">
-			</a>
+			<a class="fancybox1" rel="gallery1" href="images/image/?name=${name}">
+				<img style="max-width: 100%; height: auto; padding: 10px;" src="images/image/?name=${name}">
+				</a>
 		</div>
-		<script type="text/javascript">
-			$( function() {
-				$( '#gallery' ).jGallery( { mode: 'full-screen' } );
-			} );
-		</script>
 	</c:forEach>
 	<br>
 <a class="btn btn-lg btn-danger fix " href="javascript:history.back()" role="button">Назад</a>

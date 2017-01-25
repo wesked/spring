@@ -4,7 +4,7 @@ package com.photo.wesked.config;
  */
 public class Constants {
     
-    public  final static String IMAGES_ROOT_PATH = "C:\\Users\\weske\\Desktop\\exam_v2\\images";
+    public  final static String IMAGES_ROOT_PATH = "C:\\Users\\weske\\Desktop\\spring-master\\images";
 }
 
 
